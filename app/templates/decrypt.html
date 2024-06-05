@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Dekripsi</h1>
+<h2>Data Enkripsi</h2>
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th>Nama File Enkripsi</th>
+            <th>Ekstensi File</th>
+            <th>Nama File Deskripsi</th>
+            <th>Ukuran File Deskripsi (bytes)</th>
+            <th>Waktu Eksekusi Deskripsi</th>
+            <th>Memori Digunakan Deskripsi (MB)</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>
+                {% if row[2] %}
+                    <a href="{{ url_for('view_file_desk', filename=row[2]) }}" target="_blank">{{ row[2] }}</a>
+                {% else %}
+                    <span>Belum didekripsi</span>
+                {% endif %}
+            </td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+            <td>
+                <form method="POST">
+                    <input type="hidden" name="enc_filename" value="{{ row[0] }}">
+                    <button type="submit" class="btn btn-primary">Dekripsi</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

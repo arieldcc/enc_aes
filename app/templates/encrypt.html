@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Enkripsi</h1>
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Pilih file untuk dienkripsi:</label>
+        <input type="file" class="form-control-file" id="file" name="file">
+    </div>
+    <button type="submit" class="btn btn-primary">Enkripsi</button>
+</form>
+
+<h2>Data Enkripsi</h2>
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th>Nama File Asli</th>
+            <th>Ekstensi File</th>
+            <th>Nama File Enkripsi</th>
+            <th>Nama File Bin</th>
+            <th>Kunci Enkripsi</th>
+            <th>Ukuran File (bytes)</th>
+            <th>Waktu Eksekusi</th>
+            <th>Memori Digunakan (MB)</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            <td><a href="{{ url_for('view_file', filename=row[0]) }}" target="_blank">{{ row[0] }}</a></td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+            <td>{{ row[6] }}</td>
+            <td>{{ row[7] }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('delete', enc_filename=row[2]) }}">
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

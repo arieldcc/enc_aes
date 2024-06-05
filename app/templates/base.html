@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritma Advanced Encription Standard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center"> AES 
+                <i class="fas fa-key"></i>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="{{ url_for('home') }}" class="list-group-item list-group-item-action bg-light">
+                    <i class="fas fa-home"></i> <span class="menu-text">Home</span>
+                </a>
+                <a href="{{ url_for('encrypt') }}" class="list-group-item list-group-item-action bg-light">
+                    <i class="fas fa-lock"></i> <span class="menu-text">Enkripsi</span>
+                </a>
+                <a href="{{ url_for('decrypt') }}" class="list-group-item list-group-item-action bg-light">
+                    <i class="fas fa-unlock"></i> <span class="menu-text">Dekripsi</span>
+                </a>
+                <a href="{{ url_for('about') }}" class="list-group-item list-group-item-action bg-light">
+                    <i class="fas fa-info-circle"></i> <span class="menu-text">Tentang</span>
+                </a>
+                <a href="{{ url_for('contact') }}" class="list-group-item list-group-item-action bg-light">
+                    <i class="fas fa-envelope"></i> <span class="menu-text">Kontak</span>
+                </a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="container-fluid mt-4">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="alert alert-info" role="alert">
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+            $("#sidebar-wrapper .menu-text").toggleClass("d-none");
+        });
+    </script>
+</body>
+</html>

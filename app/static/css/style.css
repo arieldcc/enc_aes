@@ -1,0 +1,54 @@
+body {
+    overflow-x: hidden;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+#sidebar-wrapper {
+    width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition: all 0.3s;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-left: 250px;
+    transition: all 0.3s;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 80px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    padding-left: 80px;
+}
+
+.list-group-item i {
+    margin-right: 10px;
+}
+
+#wrapper.toggled .list-group-item i {
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+}
+
+#wrapper.toggled .menu-text {
+    display: none;
+}
+
+.menu-text {
+    transition: all 0.3s;
+}
