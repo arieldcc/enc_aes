@@ -20,10 +20,16 @@
                     <i class="fas fa-home"></i> <span class="menu-text">Home</span>
                 </a>
                 <a href="{{ url_for('encrypt') }}" class="list-group-item list-group-item-action bg-light">
-                    <i class="fas fa-lock"></i> <span class="menu-text">Enkripsi</span>
+                    <i class="fas fa-lock"></i> <span class="menu-text">Enkripsi AES</span>
                 </a>
                 <a href="{{ url_for('decrypt') }}" class="list-group-item list-group-item-action bg-light">
-                    <i class="fas fa-unlock"></i> <span class="menu-text">Dekripsi</span>
+                    <i class="fas fa-unlock"></i> <span class="menu-text">Dekripsi AES</span>
+                </a>
+                <a href="{{ url_for('encryptrsa') }}" class="list-group-item list-group-item-action bg-light">
+                    <i class="fas fa-lock"></i> <span class="menu-text">Enkripsi AES + RSA</span>
+                </a>
+                <a href="{{ url_for('decryptrsa') }}" class="list-group-item list-group-item-action bg-light">
+                    <i class="fas fa-unlock"></i> <span class="menu-text">Dekripsi AES + RSA</span>
                 </a>
                 <a href="{{ url_for('about') }}" class="list-group-item list-group-item-action bg-light">
                     <i class="fas fa-info-circle"></i> <span class="menu-text">Tentang</span>

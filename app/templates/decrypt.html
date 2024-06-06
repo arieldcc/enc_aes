@@ -11,6 +11,7 @@
             <th>Ukuran File Deskripsi (bytes)</th>
             <th>Waktu Eksekusi Deskripsi</th>
             <th>Memori Digunakan Deskripsi (MB)</th>
+            <th>Keterangan</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -29,6 +30,7 @@
             <td>{{ row[3] }}</td>
             <td>{{ row[4] }}</td>
             <td>{{ row[5] }}</td>
+            <td>{{ row[6] }}</td>
             <td>
                 <form method="POST">
                     <input type="hidden" name="enc_filename" value="{{ row[0] }}">
